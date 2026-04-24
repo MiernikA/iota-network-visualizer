@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --app-scrollbar-size: 0.8rem;
+    --app-scrollbar-radius: 999px;
+    --app-scrollbar-track: rgba(148, 163, 184, 0.18);
+    --app-scrollbar-thumb: linear-gradient(180deg, rgba(16, 185, 129, 0.72), rgba(5, 150, 105, 0.92));
+    --app-scrollbar-thumb-hover: linear-gradient(180deg, rgba(16, 185, 129, 0.86), rgba(4, 120, 87, 0.96));
+    --app-scrollbar-border: rgba(226, 232, 240, 0.8);
+  }
+
+  .dark {
+    color-scheme: dark;
+    --app-scrollbar-track: rgba(15, 23, 42, 0.62);
+    --app-scrollbar-thumb: linear-gradient(180deg, rgba(110, 231, 183, 0.72), rgba(16, 185, 129, 0.84));
+    --app-scrollbar-thumb-hover: linear-gradient(180deg, rgba(167, 243, 208, 0.88), rgba(16, 185, 129, 0.96));
+    --app-scrollbar-border: rgba(15, 23, 42, 0.78);
+  }
+}
+
+@layer utilities {
+  .app-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 185, 129, 0.9) var(--app-scrollbar-track);
+  }
+
+  .dark .app-scrollbar {
+    scrollbar-color: rgba(110, 231, 183, 0.92) var(--app-scrollbar-track);
+  }
+
+  .app-scrollbar::-webkit-scrollbar {
+    width: var(--app-scrollbar-size);
+    height: var(--app-scrollbar-size);
+  }
+
+  .app-scrollbar::-webkit-scrollbar-track {
+    background: var(--app-scrollbar-track);
+    border-radius: var(--app-scrollbar-radius);
+  }
+
+  .app-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--app-scrollbar-thumb);
+    border: 2px solid var(--app-scrollbar-border);
+    border-radius: var(--app-scrollbar-radius);
+  }
+
+  .app-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--app-scrollbar-thumb-hover);
+  }
+
+  .app-scrollbar::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
